@@ -217,9 +217,8 @@ class WebServer {
           }
 
           // do math
-          Integer result;
           if (num1 != null && num2 != null) {
-            result = num1 * num2;
+            Integer result = num1 * num2;
 
             // Generate response
             builder.append("HTTP/1.1 200 OK\n");
@@ -231,7 +230,7 @@ class WebServer {
             builder.append("HTTP/1.1 200 OK\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Result is: " + result);
+            //builder.append("Result is: " + result);
           }
 
           // TODO: Include error handling here with a correct error code and
