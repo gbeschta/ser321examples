@@ -25,6 +25,10 @@ import java.util.Random;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.nio.charset.Charset;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
 
 class WebServer {
   public static void main(String args[]) {
@@ -245,9 +249,15 @@ class WebServer {
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
-          JsonElement root = new JsonParser().parse(json);
-          String value1 = root.getAsJsonObject().get("owner").getAsJsonObject().get("login").getAsString();
-          System.out.println(value1);
+          JSONParser parser = new JSONParser();
+          try {
+            Object obj = parser.parse(json);
+            JSONArray array = (JSONArray) obj;
+
+            System.out.println(array.get(1));
+          } catch(ParseException pe) {
+            System.out.println("poop");
+          }
 
           // Generate response
           builder.append("HTTP/1.1 200 OK\n");
