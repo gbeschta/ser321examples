@@ -227,10 +227,10 @@ class WebServer {
             builder.append("Result is: " + result);
           } else {
             // Generate response
-            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("HTTP/1.1 412 Precondition Failed OK\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            //builder.append("Result is: " + result);
+            builder.append("Error: Must pass in two integers, i.e. multiply?num1=3&num2=5");
           }
 
           // TODO: Include error handling here with a correct error code and
