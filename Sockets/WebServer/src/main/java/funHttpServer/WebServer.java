@@ -218,7 +218,7 @@ class WebServer {
 
           // do math
           Integer result;
-          if (num1 != null and num2 !- null) {
+          if (num1 != null && num2 != null) {
             result = num1 * num2;
 
             // Generate response
