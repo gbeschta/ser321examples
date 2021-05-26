@@ -7,6 +7,8 @@ import java.io.*;
  * see http://pooh.poly.asu.edu/Ser321
  * @author Tim Lindquist Tim.Lindquist@asu.edu
  *         Software Engineering, CIDSE, IAFSE, ASU Poly
+ * @author Grant Beschta
+ *         Modified 05/23/2021
  * @version January 2020
  */
 public class Fraction {
@@ -42,17 +44,24 @@ public class Fraction {
          // create a new instance
          // Fraction *frac = [[Fraction alloc] init];
          Fraction frac = new Fraction();
-
-         // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
-
-         // print it
-         System.out.print("The fraction is: ");
-         frac.print();
-         System.out.println("");
-
-      }catch(Exception e) {
+         if (args.length == 2) {
+            int num = 0;
+            int denom = 0;
+            try {
+               frac.setNumerator(Integer.parseInt(args[0]));
+               frac.setDenominator(Integer.parseInt(args[1]));
+            } catch (Exception e) {
+               System.out.println("Arguments: " + args[0] + ", " + args[1] + " must be integers.");
+               System.exit(1);
+            }
+            // print it
+            System.out.print("The fraction is: ");
+            frac.print();
+            System.out.println("");
+         } else {
+            System.out.println("Exactly 2 arguments should be provided.\n gradle runFrac -Pnum=1 -Pdenom=2");
+         }
+      } catch(Exception e) {
          e.printStackTrace();
       }
    }
