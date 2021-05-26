@@ -227,15 +227,11 @@ class WebServer {
             builder.append("Result is: " + result);
           } else {
             // Generate response
-            builder.append("HTTP/1.1 412 Precondition Failed OK\n");
+            builder.append("HTTP/1.1 412 Precondition Failed\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
             builder.append("Error: Must pass in two integers, i.e. multiply?num1=3&num2=5");
           }
-
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
-
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
@@ -249,8 +245,14 @@ class WebServer {
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
-          System.out.println(json);
+          JsonElement root = new JsonParser().parse(json);
+          String value1 = root.getAsJsonObject().get("owner").getAsJsonObject().get("login").getAsString();
+          System.out.println(value1);
 
+          // Generate response
+          builder.append("HTTP/1.1 200 OK\n");
+          builder.append("Content-Type: text/html; charset=utf-8\n");
+          builder.append("\n");
           builder.append("Check the todos mentioned in the Java source file");
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
