@@ -261,9 +261,9 @@ class WebServer {
             for (int i = 0; i < array.size(); i++) {
               repo = (JSONObject)array.get(i);
               own = (JSONObject)repo.get("owner");
-              id = (String) own.get("id");
-              owner = (String) own.get("login");
-              repoNames[i] = (String) reop.get("name");
+              id = (String)own.get("id");
+              owner = (String)own.get("login");
+              repoNames[i] = (String)repo.get("name");
             }
             // Generate response
             builder.append("HTTP/1.1 200 OK\n");
