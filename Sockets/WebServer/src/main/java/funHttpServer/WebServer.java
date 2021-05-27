@@ -271,7 +271,7 @@ class WebServer {
             builder.append("\n");
             for (int i = 0; i < array.size(); i++) {
               builder.append(owner+", "+id+" -> "+repoNames[i]);
-              builder.append(System.getProperty(lineSeparator()));
+              builder.append(lineSeparator());
             }
           } catch(ParseException pe) {
             // Generate response
