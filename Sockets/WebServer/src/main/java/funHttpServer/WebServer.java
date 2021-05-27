@@ -270,7 +270,7 @@ class WebServer {
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
             for (int i = 0; i < array.size(); i++) {
-              builder.append(owner+", "+id+" -> "+repoNames[i]+"\n");
+              builder.append(owner+", "+id+" -> "+repoNames[i]+" \n");
             }
           } catch(ParseException pe) {
             // Generate response
