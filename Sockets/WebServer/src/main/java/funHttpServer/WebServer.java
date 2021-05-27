@@ -271,7 +271,7 @@ class WebServer {
             builder.append("\n");
             for (int i = 0; i < array.size(); i++) {
               builder.append(owner+", "+id+" -> "+repoNames[i];
-              if (i < array.size()-1)) {
+              if (i < array.size() - 1) {
                 builder.append(" --- ");
               }
             }
