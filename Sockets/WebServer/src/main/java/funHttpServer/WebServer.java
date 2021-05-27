@@ -280,7 +280,7 @@ class WebServer {
             builder.append("HTTP/1.1 412 Precondition Failed\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Method is only configured for format \"users/username/repos\". ")
+            builder.append("Method is only configured for format \"users/username/repos\". ");
             builder.append("Check that username spelling is correct.");
           }
 
