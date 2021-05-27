@@ -271,6 +271,7 @@ class WebServer {
             builder.append("\n");
             for (int i = 0; i < array.size(); i++) {
               builder.append(owner+", "+id+" -> "+repoNames[i]+" \n");
+              builder.append("\n");
             }
           } catch(ParseException pe) {
             // Generate response
