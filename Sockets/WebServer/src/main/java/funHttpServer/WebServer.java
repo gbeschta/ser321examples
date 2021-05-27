@@ -254,7 +254,8 @@ class WebServer {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
 
-            System.out.println(array.get(1));
+            JSONObject obj2 = (JSONObject)array.get(1);
+            System.out.println(obj2.get("fork"));
           } catch(ParseException pe) {
             System.out.println("poop");
           }
