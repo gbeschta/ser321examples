@@ -4,8 +4,14 @@ apply plugin: 'application'
 //define main class
 mainClassName = 'SimpleServer'
 
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
 dependencies {
-  compile group: 'org.json', name: 'json', version: '20210307'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 task SimpleWebServer(type: JavaExec) {
