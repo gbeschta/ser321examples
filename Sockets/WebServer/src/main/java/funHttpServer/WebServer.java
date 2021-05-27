@@ -251,7 +251,7 @@ class WebServer {
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
           JSONParser parser = new JSONParser();
           String owner = new String();
-          long id;
+          String id = new String();
           try {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
@@ -261,7 +261,7 @@ class WebServer {
             for (int i = 0; i < array.size(); i++) {
               repo = (JSONObject)array.get(i);
               own = (JSONObject)repo.get("owner");
-              id = (long)own.get("id");
+              id = String.valueOf((long)own.get("id"()));
               owner = (String)own.get("login");
               repoNames[i] = (String)repo.get("name");
             }
