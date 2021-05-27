@@ -251,7 +251,7 @@ class WebServer {
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
           JSONParser parser = new JSONParser();
           String owner = new String();
-          long id = new String();
+          long id;
           try {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
