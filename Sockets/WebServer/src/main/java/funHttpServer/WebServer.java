@@ -250,12 +250,20 @@ class WebServer {
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
           JSONParser parser = new JSONParser();
+          String owner = new String();
+          String id = new String();
           try {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
-            System.out.println(array.size());
-            JSONObject obj2 = (JSONObject)array.get(1);
-            System.out.println(obj2.get("name"));
+            String[array.size()] repos = new String[]();
+            JSONObject repo;
+            JSONArray own;
+            for (int i = 0; i < array.size(); i++) {
+              repo = (JSONObject)array.get(i);
+              own = (JSONObject)repo.get("owner");
+              System.out.println(repo.get("name"));
+              System.out.println(own.get("login"));
+            }
             System.out.println("done");
           } catch(ParseException pe) {
             System.out.println("poop");
