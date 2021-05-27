@@ -270,15 +270,18 @@ class WebServer {
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
             for (int i = 0; i < array.size(); i++) {
-              builder.append(owner+", "+id+" -> "+repoNames[i]+"\nmyeh");
+              builder.append(owner+", "+id+" -> "+repoNames[i];
+              if (i < array.size()-1)) {
+                builder.append(" --- ")
+              }
             }
-            builder.append("\n12345");
           } catch(ParseException pe) {
             // Generate response
             builder.append("HTTP/1.1 412 Precondition Failed\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Method is only configured for format \"users/username/repos\"");
+            builder.append("Method is only configured for format \"users/username/repos\". ")
+            builder.append("Check that username spelling is correct.");
           }
 
           // TODO: Parse the JSON returned by your fetch and create an appropriate
