@@ -255,25 +255,31 @@ class WebServer {
           try {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
-            //String[array.size()] repos = new String[]();
+            String[] repoNames = new String[array.size()];
             JSONObject repo;
             JSONObject own;
             for (int i = 0; i < array.size(); i++) {
               repo = (JSONObject)array.get(i);
               own = (JSONObject)repo.get("owner");
-              System.out.println(repo.get("name"));
-              System.out.println(own.get("login"));
+              id = (String) own.get("id");
+              owner = (String) own.get("login");
+              repoNames[i] = (String) reop.get("name");
             }
-            System.out.println("done");
+            // Generate response
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("\n");
+            for (int i = 0; i < array.size(); i++) {
+              builder.append(owner+", "+id+" -> "+respNames[i]);
+            }
           } catch(ParseException pe) {
-            System.out.println("poop");
+            // Generate response
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("\n");
+            builder.append("Poop");
           }
 
-          // Generate response
-          builder.append("HTTP/1.1 200 OK\n");
-          builder.append("Content-Type: text/html; charset=utf-8\n");
-          builder.append("\n");
-          builder.append("Check the todos mentioned in the Java source file");
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
           // and list the owner name, owner id and name of the public repo on your webpage, e.g.
