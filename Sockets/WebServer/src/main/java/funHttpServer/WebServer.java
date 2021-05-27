@@ -257,7 +257,7 @@ class WebServer {
             JSONArray array = (JSONArray) obj;
             //String[array.size()] repos = new String[]();
             JSONObject repo;
-            JSONArray own;
+            JSONObject own;
             for (int i = 0; i < array.size(); i++) {
               repo = (JSONObject)array.get(i);
               own = (JSONObject)repo.get("owner");
