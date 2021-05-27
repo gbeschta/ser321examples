@@ -255,7 +255,7 @@ class WebServer {
           try {
             Object obj = parser.parse(json);
             JSONArray array = (JSONArray) obj;
-            String[array.size()] repos = new String[]();
+            //String[array.size()] repos = new String[]();
             JSONObject repo;
             JSONArray own;
             for (int i = 0; i < array.size(); i++) {
