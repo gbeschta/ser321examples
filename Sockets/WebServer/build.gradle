@@ -4,7 +4,9 @@ apply plugin: 'application'
 //define main class
 mainClassName = 'SimpleServer'
 
-implementation 'org.json:json:20171018'
+repositories {
+    org.json
+}
 
 task SimpleWebServer(type: JavaExec) {
   group 'http'
